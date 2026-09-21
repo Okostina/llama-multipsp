@@ -42,7 +42,10 @@ export async function POST(request) {
       case "RECURRING_CONTRACT":
         console.log(
           "RECURRING_CONTRACT token stored for",
-          item.additionalData?.["recurring.shopperReference"],
+          // Webhooks spec names this "shopperReference"; Adyen's own sample
+          // reads "recurring.shopperReference", so accept either.
+          item.additionalData?.shopperReference ??
+            item.additionalData?.["recurring.shopperReference"],
           "method:",
           item.paymentMethod
         );
@@ -52,6 +55,7 @@ export async function POST(request) {
     }
   }
 
-  // Adyen treats anything other than a 2xx as a failed delivery and retries.
-  return new NextResponse("[accepted]", { status: 202 });
+  // Webhooks spec: 200, no content. Adyen accepts on status code alone and
+  // retries anything that isn't 2xx.
+  return new NextResponse(null, { status: 200 });
 }

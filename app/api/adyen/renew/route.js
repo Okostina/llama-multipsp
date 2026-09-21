@@ -13,10 +13,12 @@ import {
 // Simulates next month's renewal: a merchant-initiated (ContAuth) payment
 // using the Subscription token stored during the first Hosted Checkout
 // payment. In production this would run from a scheduler, not a button.
-export async function POST() {
+export async function POST(request) {
   try {
     const { merchantAccount } = adyenConfig();
     const shopperReference = cookies().get(SHOPPER_COOKIE)?.value;
+    const origin =
+      request.headers.get("origin") || process.env.NEXT_PUBLIC_BASE_URL;
 
     if (!shopperReference) {
       return NextResponse.json(
@@ -55,6 +57,9 @@ export async function POST() {
         paymentMethod: { type: token.type, storedPaymentMethodId: token.id },
         shopperInteraction: "ContAuth",
         recurringProcessingModel: "Subscription",
+        // Required by the /payments spec. A ContAuth renewal has no shopper
+        // to redirect, so this is never used in practice.
+        returnUrl: `${origin}/adyen/result`,
       },
     });
 

@@ -37,7 +37,8 @@ export async function POST(request) {
         returnUrl: `${origin}/adyen/result`, // Adyen appends sessionId & sessionResult
         countryCode: "NL",
         shopperLocale: "en-US",
-        channel: "Web",
+        // No `channel`: Adyen rejects it with mode "hosted" (error 14_0449),
+        // a rule the OpenAPI spec doesn't state.
         shopperReference,
         shopperInteraction: "Ecommerce",
         recurringProcessingModel: "Subscription",

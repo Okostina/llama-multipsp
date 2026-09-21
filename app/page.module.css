@@ -1,0 +1,523 @@
+/* ---------- layout shell ---------- */
+
+.page {
+  max-width: 1640px;
+  margin: 0 auto;
+  padding: 88px 5vw 120px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  max-width: 900px;
+  margin: 0 auto 96px;
+  text-align: center;
+  animation: rise 0.6s ease both;
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.brandMark {
+  font-size: 21px;
+  line-height: 1;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.75rem, 3.6vw + 1rem, 4.6rem);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+
+.hero p {
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #3c4257;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- route / features ---------- */
+
+.route {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px 56px;
+  margin: 0 0 104px;
+}
+
+.stop {
+  min-width: 0;
+}
+
+.stopMarker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.stopDot {
+  position: relative;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--purple);
+}
+
+.stopDot::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--purple);
+}
+
+.stopDash {
+  flex: 1 1 auto;
+  max-width: 72px;
+  height: 1px;
+  background-image: linear-gradient(to right, var(--line) 55%, transparent 0%);
+  background-size: 7px 1px;
+  background-repeat: repeat-x;
+}
+
+.stopHeading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.stopBody {
+  font-family: var(--font-body);
+  color: #3c4257;
+  line-height: 1.6;
+  margin: 0 0 16px;
+  font-size: 1.08rem;
+}
+
+.stopExample {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: #6b7085;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0;
+  border-left: 2px solid var(--line);
+  padding-left: 16px;
+}
+
+.stopExample strong {
+  font-style: normal;
+  color: var(--ink);
+}
+
+/* ---------- ticket row (pricing + test-mode notice) ---------- */
+
+.ticketRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(340px, 460px));
+  justify-content: center;
+  gap: 48px;
+  align-items: start;
+}
+
+.ticketCol {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ---------- boarding pass ---------- */
+
+.boardingPass {
+  position: relative;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 0 28px 52px -28px rgba(22, 33, 62, 0.4);
+}
+
+.bpHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 30px;
+}
+
+.bpHeaderLabel {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--purple);
+}
+
+.barcode {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 20px;
+  opacity: 0.45;
+}
+
+.barcode span {
+  width: 2.5px;
+  background: var(--ink);
+  display: block;
+}
+
+.bpDivider {
+  position: relative;
+  border-top: 1.5px dashed var(--line);
+}
+
+.bpDivider::before,
+.bpDivider::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+}
+
+.bpDivider::before {
+  left: -11.5px;
+}
+
+.bpDivider::after {
+  right: -11.5px;
+}
+
+.bpPriceRow {
+  padding: 10px 30px 4px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.bpAmount {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 3.4rem;
+  color: var(--ink);
+}
+
+.bpCadence {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.bpTitle {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+  padding: 0 30px 20px;
+  margin: 0;
+}
+
+.bpFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+  padding: 26px 30px;
+}
+
+.bpField label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+
+.bpFieldValue {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.bpPerks {
+  padding: 6px 30px 28px;
+}
+
+.bpPerksLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.bpPerks ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bpPerks li {
+  display: flex;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: #2b2f3a;
+  line-height: 1.4;
+}
+
+.bpPerks li span:first-child {
+  color: var(--purple);
+  font-weight: 700;
+}
+
+/* Two PSP buttons as the ticket's tear-off footer */
+.pspBar {
+  border-top: 1.5px dashed var(--line);
+  padding: 20px 30px 26px;
+}
+
+.pspBarLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.pspButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.pspButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  border: none;
+  border-radius: 9px;
+  padding: 15px 12px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.pspButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.pspButton:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.pspButtonMain {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.pspButtonSub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+.pspStripe {
+  background: var(--purple);
+  color: #fff;
+}
+
+.pspStripe:hover:not(:disabled) {
+  background: var(--purple-dark);
+}
+
+.pspAdyen {
+  background: var(--adyen);
+  color: var(--adyen-ink);
+}
+
+.pspAdyen:hover:not(:disabled) {
+  background: var(--adyen-dark);
+}
+
+.errorMsg {
+  font-family: var(--font-body);
+  color: var(--failed);
+  text-align: center;
+  margin: 18px 0 0;
+  font-size: 15px;
+}
+
+/* ---------- test-mode notice ---------- */
+
+.notice {
+  border: 1.5px dashed var(--stamp);
+  border-radius: 12px;
+  padding: 26px 30px;
+  background: #fbf3ec;
+  min-width: 0;
+}
+
+.noticeLabel {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--stamp);
+  margin: 0 0 18px;
+}
+
+.noticeGroup + .noticeGroup {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px dashed #e4cdb8;
+}
+
+.noticeGroupTitle {
+  margin: 0 0 14px;
+}
+
+.tagStripe,
+.tagAdyen {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 4px;
+}
+
+.tagStripe {
+  background: var(--purple);
+  color: #fff;
+}
+
+.tagAdyen {
+  background: var(--adyen);
+  color: var(--adyen-ink);
+}
+
+.noticeItem {
+  margin-bottom: 16px;
+}
+
+.noticeItem:last-child {
+  margin-bottom: 0;
+}
+
+.noticeItemLabel {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: #5c4632;
+}
+
+.noticeCode {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  background: #f1e4d5;
+  padding: 3px 8px;
+  border-radius: 5px;
+  color: var(--ink);
+  display: inline-block;
+  margin: 4px 0;
+}
+
+.noticeNote {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  color: #9c8a76;
+  margin: 2px 0 0;
+}
+
+/* ---------- responsive ---------- */
+
+@media (min-width: 1800px) {
+  .page {
+    max-width: 1800px;
+  }
+}
+
+@media (max-width: 980px) {
+  .ticketRow {
+    grid-template-columns: minmax(0, 460px);
+  }
+}
+
+@media (max-width: 860px) {
+  .route {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 64px 20px 80px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.1rem, 8vw, 2.6rem);
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .bpFields {
+    grid-template-columns: 1fr;
+  }
+
+  .pspButtons {
+    grid-template-columns: 1fr;
+  }
+}

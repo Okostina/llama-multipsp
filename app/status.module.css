@@ -1,0 +1,338 @@
+/* Shared by /success and /cancel — same tokens, type scale and ticket motif
+   as the landing page, so the post-Checkout return doesn't feel like a
+   different product. */
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 72px 5vw 88px;
+  animation: rise 0.5s ease both;
+  /* Centre the stub on tall screens. min-height (not height) means longer
+     copy just grows the page instead of getting clipped. */
+  min-height: 100vh;
+  display: grid;
+  align-content: center;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 32px;
+  text-decoration: none;
+}
+
+.brandMark {
+  font-size: 21px;
+  line-height: 1;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ---------- the stub ---------- */
+
+.stub {
+  position: relative;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 0 28px 52px -28px rgba(22, 33, 62, 0.4);
+}
+
+.stubHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 34px;
+}
+
+.stubLabel {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+.barcode {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 20px;
+  opacity: 0.45;
+}
+
+.barcode span {
+  width: 2.5px;
+  background: var(--ink);
+  display: block;
+}
+
+.divider {
+  position: relative;
+  border-top: 1.5px dashed var(--line);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+}
+
+.divider::before {
+  left: -11.5px;
+}
+
+.divider::after {
+  right: -11.5px;
+}
+
+.stubBody {
+  padding: 40px 34px 38px;
+  text-align: center;
+}
+
+/* ---------- the stamp ---------- */
+
+.stamp {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 2.5px solid currentColor;
+  border-radius: 6px;
+  transform: rotate(-3deg);
+  opacity: 0.9;
+  margin-bottom: 28px;
+}
+
+.confirmed {
+  color: var(--confirmed);
+}
+
+.processing {
+  color: var(--pending);
+}
+
+.failed {
+  color: var(--failed);
+}
+
+.neutral {
+  color: var(--muted);
+}
+
+/* ---------- copy ---------- */
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 2.4vw + 1.1rem, 2.9rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 18px;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #3c4257;
+  margin: 0 auto;
+  max-width: 480px;
+}
+
+/* ---------- plan details ---------- */
+
+.details {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+  gap: 20px 24px;
+  margin: 34px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid #ece6da;
+  max-width: 440px;
+  text-align: left;
+}
+
+.detail label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+
+.detailValue {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.backLink {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--purple);
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.reference {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  margin: 18px 0 0;
+  word-break: break-all;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 64px 20px 80px;
+  }
+
+  .stubHeader {
+    padding: 20px 24px;
+  }
+
+  .stubBody {
+    padding: 32px 24px 30px;
+  }
+
+  .details {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ---------- PSP tag + Adyen renewal panel ---------- */
+
+.pspTag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--adyen);
+  color: var(--adyen-ink);
+  letter-spacing: 0.08em;
+}
+
+.pspTagStripe {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--purple);
+  color: #fff;
+  letter-spacing: 0.08em;
+}
+
+.renewal {
+  margin: 34px auto 0;
+  padding: 24px 26px;
+  max-width: 460px;
+  border: 1.5px dashed var(--adyen);
+  border-radius: 10px;
+  background: #f1fbf5;
+  text-align: left;
+}
+
+.renewalLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--adyen-ink);
+  margin: 0 0 8px;
+}
+
+.renewalBody {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: #3c4257;
+  margin: 0 0 16px;
+}
+
+.renewalButton {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  background: var(--adyen);
+  color: var(--adyen-ink);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.renewalButton:hover:not(:disabled) {
+  background: var(--adyen-dark);
+}
+
+.renewalButton:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+.renewalResult {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  margin: 14px 0 0;
+  line-height: 1.6;
+}
+
+.renewalRef {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 12.5px;
+  word-break: break-all;
+}

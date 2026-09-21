@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --ink: #16213e;
+  --paper: #f6f2e9;
+  --paper-dot: #eae1cc;
+  --line: #d8cfba;
+  --muted: #666c7d;
+  --purple: #635bff;
+  --purple-dark: #4b3fe0;
+  --stamp: #c1440e;
+
+  /* Adyen brand: green paired with its dark navy (better contrast than white) */
+  --adyen: #0abf53;
+  --adyen-dark: #09a849;
+  --adyen-ink: #00112c;
+
+  /* payment outcome states, used on /success and /cancel */
+  --confirmed: #2b6a1f;
+  --pending: #9a5a10;
+  --failed: #b3261e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--paper);
+  background-image: radial-gradient(var(--paper-dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
